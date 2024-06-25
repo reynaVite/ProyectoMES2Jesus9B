@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predicción de Precio de Aviones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #6a0dad;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #6a0dad;
+        }
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #6a0dad;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #5a0cab;
+        }
+        .prediction {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #6a0dad;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Predicción de Precio de Aviones</h1>
+        <form action="/" method="post">
+            <label for="HP">Potencia o Empuje por cada Motor (HP or lbs thr ea engine):</label>
+            <input type="text" id="HP" name="HP">
+            
+            <label for="MaxSpeed">Velocidad Máxima (Max speed Knots):</label>
+            <input type="text" id="MaxSpeed" name="MaxSpeed">
+            
+            <label for="CruiseSpeed">Velocidad de Crucero (Rcmnd cruise Knots):</label>
+            <input type="text" id="CruiseSpeed" name="CruiseSpeed">
+            
+            <label for="RateOfClimbAllEng">Tasa de Ascenso con Todos los Motores (All eng rate of climb):</label>
+            <input type="text" id="RateOfClimbAllEng" name="RateOfClimbAllEng">
+            
+            <label for="RateOfClimbOneEng">Tasa de Ascenso con un Motor Fuera (Eng out rate of climb):</label>
+            <input type="text" id="RateOfClimbOneEng" name="RateOfClimbOneEng">
+            
+            <input type="submit" value="Predecir">
+        </form>
+
+        {% if prediction is not none %}
+            <div class="prediction">
+                <h2>Predicción del Precio: {{ prediction }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
